@@ -9,7 +9,7 @@ def construct_board():
     print footer
 
     for y in range(0, 8):
-        to_print = str(y) + '  '
+        to_print = chr(y + 97).upper() + '  '
         for x in range(0, 9):
             piece = gamepiece.get_piece(str(x) + str(y))
             if piece:
