@@ -8,15 +8,16 @@ def construct_board():
     print header
     print footer
 
-    for i in range(0, 8):
-        to_print = str(i)
+    for y in range(0, 8):
+        to_print = str(y) + '  '
         for x in range(0, 9):
-            to_print += '  | '
+            piece = gamepiece.get_piece(str(x) + str(y))
+            if piece:
+                to_print += '| ' + piece.get_team() + 'O\033[0m '
+            else:
+                to_print += '|   '
         print to_print
         print footer
-
-    for piece in gamepiece.gamepieces:
-        print piece.location
 
 
 def init_board():
@@ -27,4 +28,5 @@ def init_board():
 def update_board():
     construct_board()
 
+gamepiece.init_pieces()
 construct_board()
