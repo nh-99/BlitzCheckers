@@ -9,7 +9,10 @@ def construct_board():
     print footer
 
     for i in range(0, 8):
-        print str(i) + '  |   |   |   |   |   |   |   |   |'
+        to_print = str(i)
+        for x in range(0, 9):
+            to_print += '  | '
+        print to_print
         print footer
 
     for piece in gamepiece.gamepieces:
