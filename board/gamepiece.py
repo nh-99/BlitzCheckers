@@ -25,12 +25,12 @@ def init_pieces():
             if i == 0 or i == 2 or i == 5 or i == 7:
                 if (x + 2) % 2 and i < 3:
                     gamepieces.append(GamePiece(str(x) + str(i), '\033[91m'))
-                elif (x + 2) % 2:
+                elif i > 4 and (x + 1) % 2:
                     gamepieces.append(GamePiece(str(x) + str(i), '\033[94m'))
             elif i == 1 or i == 6:
                 if (x + 1) % 2 and i < 3:
                     gamepieces.append(GamePiece(str(x) + str(i), '\033[91m'))
-                elif (x + 1) % 2:
+                elif i > 4 and (x + 2) % 2:
                     gamepieces.append(GamePiece(str(x) + str(i), '\033[94m'))
 
 

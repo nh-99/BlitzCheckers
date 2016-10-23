@@ -8,6 +8,7 @@ def handle_move():
         if new_move.lower() == "quit":
             print "Thank you for playing!"
             return
+
         parsed_input = re.search('([A-Z][0-9]) to ([A-Z][0-9])', new_move)
         try:
             parsed_input.group(0)
@@ -27,7 +28,6 @@ def handle_move():
         boardmanager.construct_board()
         print 'Invalid command (format the command like "A0 to B0")'
         handle_move()
-
 
 gamepiece.init_pieces()
 boardmanager.construct_board()
