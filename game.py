@@ -1,8 +1,11 @@
 import re
 from board import gamepiece, boardmanager
+player_score = 0
 
 
 def handle_move():
+    global player_score
+
     new_move = raw_input('What is your next move?\n')
     if new_move:
         if new_move.lower() == "quit":
@@ -13,7 +16,10 @@ def handle_move():
         try:
             parsed_input.group(0)
             parsed_input.group(1)
-            if gamepiece.move_piece(parsed_input.group(0) + ' to ' + parsed_input.group(1)):
+            is_move = gamepiece.move_piece(parsed_input.group(0) + ' to ' + parsed_input.group(1))
+            if is_move:
+                if is_move == 'jump':
+                    player_score += 1
                 boardmanager.construct_board()
                 handle_move()
             else:
