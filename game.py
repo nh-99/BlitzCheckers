@@ -1,12 +1,14 @@
-import re
 from board import gamepiece, boardmanager
+import re
+from colorama import init, Fore, Back, Style
+init()
 player_score = 0
 
 
 def handle_move():
     global player_score
 
-    print 'Your score is currently \033[92m' + str(player_score) + '\033[0m\n'
+    print 'Your score is currently ' + Fore.GREEN + str(player_score) + Style.RESET_ALL
     new_move = raw_input('What is your next move?\n')
     if new_move:
         if new_move.lower() == "quit":

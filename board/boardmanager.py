@@ -1,3 +1,4 @@
+from colorama import Style
 import gamepiece
 header = '     0   1   2   3   4   5   6   7'
 footer = '   +---+---+---+---+---+---+---+---+'
@@ -13,7 +14,7 @@ def construct_board():
         for x in range(0, 9):
             piece = gamepiece.get_piece(str(x) + str(y))
             if piece:
-                to_print += '| ' + piece.get_team() + 'O\033[0m '
+                to_print += '| ' + piece.get_team() + 'O' + Style.RESET_ALL + ' '
             else:
                 to_print += '|   '
         print to_print
