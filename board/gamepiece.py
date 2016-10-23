@@ -113,15 +113,25 @@ def valid_move(is_blue, old_location, new_location):
 
 def bot_move():
     piece = random.choice(get_team_pieces('\033[91m'))
-    x2_1 = int(piece.get_location()[0]) + 1
-    x2_2 = int(piece.get_location()[0]) - 1
-    y2 = int(piece.get_location()[1]) + 1
+    x2_1 = 0
+    x2_2 = 0
+    y2 = 0
+    if 0 <= int(piece.get_location()[0]) + 1 <= 7:
+        x2_1 = int(piece.get_location()[0]) + 1
+    else:
+        bot_move()
+    if 0 <= int(piece.get_location()[0]) - 1 <= 7:
+        x2_2 = int(piece.get_location()[0]) - 1
+    else:
+        bot_move()
+    if 0 <= int(piece.get_location()[1]) + 1 <= 7:
+        y2 = int(piece.get_location()[1]) + 1
+    else:
+        bot_move()
 
     if valid_move(False, piece.get_location(), str(x2_1) + str(y2)):
-        print x2_1, y2
         piece.move_piece(str(x2_1) + str(y2))
     elif valid_move(False, piece.get_location(), str(x2_2) + str(y2)):
-        print x2_1, y2
         piece.move_piece(str(x2_2) + str(y2))
     else:
         bot_move()

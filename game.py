@@ -6,6 +6,7 @@ player_score = 0
 def handle_move():
     global player_score
 
+    print 'Your score is currently \033[92m' + str(player_score) + '\033[0m\n'
     new_move = raw_input('What is your next move?\n')
     if new_move:
         if new_move.lower() == "quit":
