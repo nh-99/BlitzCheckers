@@ -27,6 +27,3 @@ def init_board():
 
 def update_board():
     construct_board()
-
-gamepiece.init_pieces()
-construct_board()

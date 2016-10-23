@@ -39,3 +39,13 @@ def get_piece(location):
         if piece.get_location() == location:
             return piece
     return None
+
+
+def move_piece(command):
+    locations = command.split(' ')
+    piece = get_piece(str(locations[0][1]) + str(ord(locations[0][0].lower()) - 97))
+    if piece:
+        piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
+        return True
+    else:
+        return False
