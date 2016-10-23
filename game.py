@@ -1,5 +1,4 @@
 import re
-
 from board import gamepiece, boardmanager
 
 
@@ -8,6 +7,7 @@ def handle_move():
     if new_move:
         if new_move.lower() == "quit":
             print "Thank you for playing!"
+            return
         parsed_input = re.search('([A-Z][0-9]) to ([A-Z][0-9])', new_move)
         try:
             parsed_input.group(0)

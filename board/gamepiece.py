@@ -41,11 +41,36 @@ def get_piece(location):
     return None
 
 
+def valid_move(is_blue, old_location, new_location):
+    if is_blue:
+        piece1 = get_piece(old_location)
+        piece2 = get_piece(new_location)
+
+        if not piece1:
+            return False
+
+        if not piece1.get_team() == '\033[94m':
+            return False
+
+        location = piece1.get_location()
+        print location.split()
+        test_locations = [str(int(location[0]) + 1) + str(int(location[1]) - 1), str(int(location[0]) - 1) + str(int(location[1]) - 1)]
+        for loc in test_locations:
+            if loc == new_location:
+                if not piece2:
+                    return True
+
+        return False
+
+
 def move_piece(command):
     locations = command.split(' ')
     piece = get_piece(str(locations[0][1]) + str(ord(locations[0][0].lower()) - 97))
     if piece:
-        piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
-        return True
+        if valid_move(True, piece.get_location(), str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97)):
+            piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
+            return True
+        else:
+            return False
     else:
         return False
