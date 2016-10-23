@@ -21,6 +21,14 @@ def handle_move():
             if is_move:
                 if is_move == 'jump':
                     player_score += 1
+                elif is_move == 'win1':
+                    player_score += 10
+                elif is_move == 'win2':
+                    print '\n' * 100
+                    print 'Congratulations, you won! Thank you for playing!'
+                elif is_move == 'win3':
+                    print '\n' * 100
+                    print 'Sorry, but you did not win this round. Feel free to try again!'
                 boardmanager.construct_board()
                 handle_move()
             else:

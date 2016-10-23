@@ -143,13 +143,21 @@ def move_piece(command):
     if piece:
         is_valid = valid_move(True, piece.get_location(), str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
         if is_valid:
-            if is_valid == 'jump':
-                piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
-                bot_move()
-                return 'jump'
             piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
-            bot_move()
-            return True
+            if piece.location[1] == '0':
+                gamepieces.remove(piece)
+                if get_team_pieces('\033[94m') is []:
+                    return 'win2'
+                try:
+                    bot_move()
+                except RuntimeError:
+                    print 'Bot cannot move'
+                return 'win1'
+            try:
+                bot_move()
+            except RuntimeError:
+                print 'Bot cannot move'
+            return is_valid
         else:
             return False
     else:
