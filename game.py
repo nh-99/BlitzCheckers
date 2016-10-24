@@ -1,11 +1,20 @@
 from board import gamepiece, boardmanager
 import re, sys
-from colorama import init, Fore, Style
+from colorama import init, Fore, Back, Style
 init()
 player_score = 0
 
 
 def main_menu():
+    print Fore.CYAN + "______ _ _ _       _____ _               _"
+    print "| ___ \ (_) |     /  __ \ |             | |                "
+    print "| |_/ / |_| |_ ___| /  \/ |__   ___  ___| | _____ _ __ ___ "
+    print "| ___ \ | | __|_  / |   | '_ \ / _ \/ __| |/ / _ \ '__/ __|"
+    print "| |_/ / | | |_ / /| \__/\ | | |  __/ (__|   <  __/ |  \__ \\"
+    print "\____/|_|_|\__/___|\____/_| |_|\___|\___|_|\_\___|_|  |___/" + Fore.RESET
+    print
+    print Back.BLUE + 'By Noah Howard' + Back.RESET
+    print
     print 'Welcome to BlitzCheckers! To play, enter 1. For instructions, enter 2.'
     choice = raw_input()
     if choice:
@@ -28,6 +37,7 @@ def main_menu():
 
 
 def reset_game():
+    global player_score
     player_score = 0
     gamepiece.init_pieces()
     boardmanager.construct_board()
