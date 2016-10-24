@@ -154,7 +154,7 @@ def move_piece(command):
                 if not get_team_pieces(Fore.BLUE):
                     return 'win2'
                 try:
-                    bot_move()
+                    piece = bot_move()
                     if piece.location[1] == '7':
                         gamepieces.remove(piece)
                         if not get_team_pieces(Fore.BLUE):
