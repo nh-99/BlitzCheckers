@@ -134,8 +134,10 @@ def bot_move():
 
     if valid_move(False, piece.get_location(), str(x2_1) + str(y2)):
         piece.move_piece(str(x2_1) + str(y2))
+        return piece
     elif valid_move(False, piece.get_location(), str(x2_2) + str(y2)):
         piece.move_piece(str(x2_2) + str(y2))
+        return piece
     else:
         bot_move()
 
@@ -153,11 +155,19 @@ def move_piece(command):
                     return 'win2'
                 try:
                     bot_move()
+                    if piece.location[1] == '7':
+                        gamepieces.remove(piece)
+                        if not get_team_pieces(Fore.BLUE):
+                            return 'win3'
                 except RuntimeError:
                     print 'Bot cannot move'
                 return 'win1'
             try:
-                bot_move()
+                piece = bot_move()
+                if piece.location[1] == '7':
+                    gamepieces.remove(piece)
+                    if not get_team_pieces(Fore.BLUE):
+                        return 'win3'
             except RuntimeError:
                 print 'Bot cannot move'
             return is_valid

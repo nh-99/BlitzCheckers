@@ -61,7 +61,7 @@ def handle_move():
     global player_score
 
     print 'Your score is currently ' + Fore.GREEN + str(player_score) + Style.RESET_ALL
-    new_move = raw_input('What is your next move?\n')
+    new_move = raw_input('What is your next move? (Format like ' + Style.BRIGHT + 'F0 to E1' + Style.NORMAL + ', or enter quit to exit)\n')
     if new_move:
         if new_move.lower() == "quit":
             print "Thank you for playing!"
