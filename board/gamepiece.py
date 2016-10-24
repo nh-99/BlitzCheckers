@@ -145,7 +145,7 @@ def move_piece(command):
     piece = get_piece(str(locations[0][1]) + str(ord(locations[0][0].lower()) - 97))
     if piece:
         is_valid = valid_move(True, piece.get_location(), str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
-        if not is_valid:
+        if is_valid:
             piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
             if piece.location[1] == '0':
                 gamepieces.remove(piece)

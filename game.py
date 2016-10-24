@@ -23,6 +23,7 @@ def main_menu():
             boardmanager.construct_board()
             handle_move()
         elif choice == '2':
+            print '\n' * 100
             print 'The primary objective of this game is to move all your pieces to the other end of the board.'
             print 'In order to score more points, you may jump enemy checkers for an extra point each.'
             print 'You may only jump one checker at a time.'
