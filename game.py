@@ -67,7 +67,7 @@ def handle_move():
             print "Thank you for playing!"
             return
 
-        parsed_input = re.search('([A-Z][0-9]) to ([A-Z][0-9])', new_move)
+        parsed_input = re.search('([A-Z][0-7]) to ([A-Z][0-7])', new_move)
         try:
             parsed_input.group(0)
             parsed_input.group(1)
