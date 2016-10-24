@@ -1,4 +1,4 @@
-from colorama import Fore, Back, Style
+from colorama import Fore
 import random
 gamepieces = []
 
@@ -22,6 +22,8 @@ class GamePiece:
 
 
 def init_pieces():
+    global gamepieces
+    gamepieces = []
     for i in range(0, 8):
         for x in range(0, 8):
             if i == 0 or i == 2 or i == 5 or i == 7:
@@ -143,11 +145,11 @@ def move_piece(command):
     piece = get_piece(str(locations[0][1]) + str(ord(locations[0][0].lower()) - 97))
     if piece:
         is_valid = valid_move(True, piece.get_location(), str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
-        if is_valid:
+        if not is_valid:
             piece.move_piece(str(locations[2][1]) + str(ord(locations[2][0].lower()) - 97))
             if piece.location[1] == '0':
                 gamepieces.remove(piece)
-                if get_team_pieces(Fore.BLUE) is []:
+                if not get_team_pieces(Fore.BLUE):
                     return 'win2'
                 try:
                     bot_move()
